@@ -17,13 +17,13 @@ y = ds.spam
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 #pipelines
-pip = Pipeline([
+pipe = Pipeline([
     ('v', CountVectorizer()),
     ('nb', MultinomialNB())
 ])
 
 #training model
-pip.fit(X_train, y_train)
+pipe.fit(X_train, y_train)
 
 #input
 emails = [
@@ -32,10 +32,10 @@ emails = [
 ]
 
 #predicting the input
-y_preds = pip.predict(emails)
+y_preds = pipe.predict(emails)
 
 #chehcking the score of the model
-print(pip.score(X_test, y_test))
+print(pipe.score(X_test, y_test))
 
 #output if 1: spam, 0: not spam 
 print(y_preds)
